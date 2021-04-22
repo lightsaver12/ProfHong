@@ -6,37 +6,34 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Sixth {
-
+	
+	
+	
+	public static String nameChange(String k17_item, int k17_len) throws UnsupportedEncodingException {      
+	      String k17_temp, k17_newName; // 스트링 값 temp와 newName를 선언
+	      byte[] k17_byte1 = k17_item.getBytes("euc-kr");   // euc-kr 형식으로 바이트 단위로 쪼갬
+	      if (k17_byte1.length < 13) { // byte1의 길이가 16바이트 미만일 경우
+	         k17_temp = k17_item; // 아이템이름을 그대로 출력
+	      } else { // 그렇지 않을 경우
+	         int k17_count = 0; // 정수형 변수 count를 선언하고 0으로 초기화
+	         for (int k17_i = 0; k17_i <k17_len; k17_i++) { // i값이 len까지 1씩 증가하면서 반복
+	            if ((k17_byte1[k17_i] & 0x80) == 0x80) k17_count++; // & 연산자를 통해 해당 바이트가 한글인지를 확인
+	         }
+	         // 마지막 바이트-1 값이 한글이거나 count를 나눈값이 홀수이면 마지막 바이트를 자름
+	         if ((k17_byte1[k17_len - 1] & 0x80) == 0x80 && (k17_count % 2) == 1) k17_len--;
+	         k17_temp = new String(k17_byte1, 0, k17_len, "euc-kr");   // 0에서 len까지 자른 스트링을 저장
+	      }
+	      k17_temp = k17_temp + "                     "; // 남은 칸을 빈칸으로 맞추기 위함
+	      byte[] byte2 = k17_temp.getBytes("euc-kr"); // euc-kr 형식으로 바이트를 다시 쪼갬
+	      k17_newName = new String(byte2, 0, 13, "euc-kr"); // newName에 euc-kr 형식으로 0에서 16바이트까지 자른 스트링을 저장   
+	      return k17_newName;   // newName값을 반환
+	   }
+	
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		// TODO Auto-generated method stub
 		String[] k17_itemname = new String[] { "웨어하우스", "차카나요안착하나요안착하나유몰라여", "사브레인", "두유원어밀딥키스", "짱구셔요", "쿠키앤크림", "스윙스칩", "포카앤칩", "꼬북펀칩",
 				"오나의감자", "어웨이런볼", "에너르기바", "게이트웨이", "월드콘칩", "아이개셔", "올때메로나", "정보석바", "씽씽바보", "오감자칩", "쫀드기행", "코코볼넷", "마이쮸우",
 				"깝새우", "감자깡까", "맛동산이맛이없어유", "아폴로밍", "너고소미", "빼뺴말로", "쵸코얼음땡", "마이콘치즈" };
-		for (int k17_i = 0; k17_i < k17_itemname.length; k17_i++) { // for 문을 돌려 k17_itemname의 개수만큼 반복을 해줍니다. 	
-			if (k17_itemname[k17_i].getBytes().length > 21 || k17_itemname[k17_i].length() > 7) {	
-				// 만약 배열안에 있는 글자의 크기가 7글자보다 크거나 최대 byte(한글 기준 3byte)가 
-				// 7의 최대 byte 수인 7 * 3 인 21byte보다 크다면
-				k17_itemname[k17_i] = k17_itemname[k17_i].substring(0, 7); 
-				// k17_itemname[k17_i] 안에 substring을 통해 7글자까지만 저장합니다. 
-			}
-		
-		int k17_korean = (k17_itemname[k17_i].getBytes().length - k17_itemname[k17_i].length()) / 2;
-		// 정수형 변수 k17_korean을 정의하고 
-		// (k17_itemname[k17_i].getBytes().length - k17_itemname[k17_i].length()) 
-		// 글자의 byte수에서 글자의 길이만큼 빼주고 그 값을 2로 나누어줍니다. 
-		// ex) byte수는 3x+y로 정의, 글자수는 x+y라는 가정하에 (3x+y)-(x+y)를 해주면 2가 남기에 2를 나누어주는 것입니다. 
-		int k17_byte = k17_itemname[k17_i].length() - k17_korean;
-		// 정수형 변수 k17_byte를 정의하고 안에 글자수의 길이에 변형한 k17_korean의 수를 빼준값을 저장해줍니다. 
-		int k17_number = 14 - (2*k17_korean + k17_byte);
-		// k17_number 안에 한글이 2byte 기준에서 7글자의 최대 byte수인 14byte에서 한글은 2byte이니 k17_korean 변수에 2를 곱해주고 
-		// k17_byte는 1byte를 기준으로 두 변수를 더해주고 아까의 최대 byte에서 빼줍니다. 
-		// k17_number는 수가 다른 글자를 맞추기 위해 얼만큼 공백을 더해줄지에 대한 값입니다. 
-		for (int k17_j = 0; k17_j < k17_number; k17_j++) { //for문을 돌려 공백수만큼 돌려주고 
-			k17_itemname[k17_i] = k17_itemname[k17_i] + " ";
-			// 그 공백을 필요한 글자들에 더해줍니다. 
-		}
-	}
-	
 		// 문자열 배열 k17_itemname을 생성하고 안에 값들을 저장해줍니다. 
 		int[] k17_price = new int[] { 10000, 800, 1200, 1000000, 90000, 100000, 1100, 1200, 1500, 1300, 2100, 1200, 1300, 1000, 900,
 				900, 900, 900, 1300, 800, 3000, 1200, 1100, 1300, 2100, 800, 1300, 1200, 1200, 1300 };
@@ -62,17 +59,17 @@ public class Sixth {
 		System.out.printf("%s%18s\n", "[구매]" + k17_sdt.format(k17_cal.getTime()), "POS:0011-9861"); 
 		// k17_sdt.format(k17_cal.getTime())를 통해 실제 날짜와 시간을 구해줍니다. 
 		System.out.printf("----------------------------------------\n"); // -- 를 출력해줍니다. 
-		System.out.printf("%7s%14s%2s%8s\n", "상 품 명", "단  가", "수량", "금  액"); // 문자열들을 출력해줍니다. 
+		System.out.printf("%7s%12s%3s%8s\n", "상 품 명", "단  가", "수량", "금  액"); // 문자열들을 출력해줍니다. 
 		System.out.printf("----------------------------------------\n"); // -- 를 출력해줍니다. 
 
 		//System.out.println(k17_itemname[0].getBytes("euc-kr").length);
 		
 		for (int k17_i = 0; k17_i < k17_itemname.length; k17_i++) {
 			if (k17_taxfree[k17_i] == true) { // 이 조건문은 면세상품일때 *를 출력해주기 위한 조건문입니다. 
-				System.out.printf("* %s %9s %2d %10s\n", k17_itemname[k17_i], k17_df.format(k17_price[k17_i]), k17_num[k17_i],
+				System.out.printf("* %s%9s %3d %10s\n", nameChange(k17_itemname[k17_i], 13), k17_df.format(k17_price[k17_i]), k17_num[k17_i],
 									k17_df.format(k17_price[k17_i] * k17_num[k17_i]));
 			} else if (k17_taxfree[k17_i] == false) { // 만약 부울 자료형 배열에서 false인 값들은 
-				System.out.printf("  %s %9s %2d %10s\n", k17_itemname[k17_i], k17_df.format(k17_price[k17_i]), k17_num[k17_i],
+				System.out.printf("  %s%9s %3d %10s\n", nameChange(k17_itemname[k17_i], 13), k17_df.format(k17_price[k17_i]), k17_num[k17_i],
 						k17_df.format(k17_price[k17_i] * k17_num[k17_i]));
 	//		System.out.printf("%s%5s%5s%10s\n", k17_itemname[k17_i], k17_df.format(k17_price[k17_i]), k17_num[k17_i],
 			//			k17_df.format(k17_price[k17_i] * k17_num[k17_i]));	
