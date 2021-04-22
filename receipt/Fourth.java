@@ -21,6 +21,7 @@ public class Fourth {
 		DecimalFormat k17_df = new DecimalFormat("###,###,###,###,###"); // 콤마를 구하기 위한 식입니다. 
 		Calendar k17_cal = Calendar.getInstance(); // 실제 날짜, 시간을 구하기 위한 식입니다. 
 		SimpleDateFormat k17_sdt = new SimpleDateFormat("YYYY/MM/dd HH:mm:ss"); // 실제 날짜, 시간을 원하는 방식으로 지정하는 식입니다. 
+		SimpleDateFormat k17_sdt2 = new SimpleDateFormat("YYYYMMdd");
 		
 		System.out.printf("%s\n", "신용승인"); // 문자열 클래스이므로 %s를 사용하고 \n을 통해 줄을 바꿉니다. 그리고 마지막에 원하는 문자열을 출력합니다. 
 		System.out.printf("%s%5s%12s%5s\n","단말기 : ","2N6865898", "전표번호 : ", "0421218"); // 문자열 클래스이므로 s를 사용합니다. 
@@ -43,6 +44,6 @@ public class Fourth {
 		System.out.printf("%s%5s\n", "문의 : ", "TEL)1544-4700"); // 문자를 출력합니다. 
 		System.out.printf("- - - - - - - - - - - - - - - - - - - - - \n"); // - - 를 출력합니다. 
 		System.out.printf("%23s\n", "* 감사합니다 *"); // 문자를 출력합니다. 
-		System.out.printf("%39s","표준V2.08_20200212"); // 문자를 출력합니다. 
+		System.out.printf("%39s","표준V2.08_" + k17_sdt2.format(k17_cal.getTime())); // 문자를 출력합니다. 
 	}
 }
