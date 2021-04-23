@@ -15,22 +15,23 @@ public class Fifth {
 		
 		DecimalFormat k17_df = new DecimalFormat("###,###,###,###,###"); // 콤마를 구하기 위한 식입니다. 
 		Calendar k17_cal = Calendar.getInstance(); // 실제 날짜, 시간을 구하기 위한 식입니다. 
+		Calendar k17_cal2 = Calendar.getInstance();
 		SimpleDateFormat k17_sdt = new SimpleDateFormat("YYYY.MM.dd HH:mm:ss"); // 실제 날짜, 시간을 원하는 방식으로 지정하는 식입니다. 
 		SimpleDateFormat k17_sdt2 = new SimpleDateFormat("MM월dd일"); // 새로운 형식으로 날짜를 지정해줍니다. 
 		Date k17_date = new Date(); // 생성자를 만들어 실제 현재 날짜를 가지고 옵니다. 
-		k17_cal.setTime(k17_date); // 생성자에 시간을 넣어줍니다. 
-		k17_cal.add(Calendar.DATE, 14); // 그리고 현재날짜에서 14일을 더한 값을 저장해줍니다. 
-		String k17_afterdate = k17_sdt2.format(k17_cal.getTime()); 
+		k17_cal2.setTime(k17_date); // 생성자에 시간을 넣어줍니다. 
+		k17_cal2.add(Calendar.DATE, 14); // 그리고 현재날짜에서 14일을 더한 값을 저장해줍니다. 
+		String k17_afterdate = k17_sdt2.format(k17_cal2.getTime()); 
 		// 문자형 클래스를 정의하고 새로운 형식의 날짜를 저장해줍니다. 
 		String k17_itemname1 = "퓨어에어 비말차단용마스크(최고급행)"; // 문자형 클래스 k17_itemname1 을 정의하고 안에 문자열을 저장해줍니다. 
 		String k17_itemcode1 = "[1031615]"; // 문자형 클래스 k17_itemcode1을 정의하고 안에 문자열을 저장해줍니다. 
-		int k17_price1 = 1000; // 정수형 변수 k17_price1을 정의하고 3000을 저장해줍니다. 
-		int k17_amount1 = 1; // 정수형 변수 k17_amount1을 정의하고 1을 저장해줍니다. 
+		int k17_price1 = 10000000; // 정수형 변수 k17_price1을 정의하고 3000을 저장해줍니다. 
+		int k17_amount1 = 13; // 정수형 변수 k17_amount1을 정의하고 1을 저장해줍니다. 
 		
 		String k17_itemname2 = "슬라이드식명창(가로명)(100호)"; // 문자형 클래스 k17_itemname2 을 정의하고 안에 문자열을 저장해줍니다. 
 		String k17_itemcode2 = "[11008152]"; // 문자형 클래스 k17_itemcode2을 정의하고 안에 문자열을 저장해줍니다.
-		int k17_price2 = 1000; // 정수형 변수 k17_price2을 정의하고 1000을 저장해줍니다. 
-		int k17_amount2 = 1; // 정수형 변수 k17_amount2을 정의하고 1을 저장해줍니다. 
+		int k17_price2 = 3000000; // 정수형 변수 k17_price2을 정의하고 1000을 저장해줍니다. 
+		int k17_amount2 = 3; // 정수형 변수 k17_amount2을 정의하고 1을 저장해줍니다. 
 		
 		String k17_itemname3 = "매직흡착 인테리어후크(알루미늄타입)"; // 문자형 클래스 k17_itemname3 을 정의하고 안에 문자열을 저장해줍니다.
 		String k17_itemcode3 = "[1020800]"; // 문자형 클래스 k17_itemcode3을 정의하고 안에 문자열을 저장해줍니다.
@@ -50,21 +51,21 @@ public class Fifth {
 		System.out.printf("%s\n", "전화:031-702-6016"); // 문자를 출력해줍니다. 
 		System.out.printf("%s\n", "본사:서울 강남구 남부순환로 2748 (도곡동)"); // 문자를 출력해줍니다. 
 		System.out.printf("%s\n", "대표:박정부,신호섭 213-81-52063"); // 문자를 출력해줍니다. 
-		System.out.printf("%s\n%s\n", "매장:경기도 성남시 분당구 분당로53번길 11", "(서현동)"); // 문자를 출력해줍니다. 
+		System.out.printf("%s\n", "매장:경기도 성남시 분당구 분당로53번길 11(서현동)"); // 문자를 출력해줍니다. 
 		System.out.printf("=========================================\n"); // == 를 출력해줍니다. 
 		System.out.printf("%24s\n%26s\n", "소비자중심경영(CCM) 인증기업", "ISO 9001 품질경영시스템 인증기업"); // 문자를 출력합니다. 
 		System.out.printf("=========================================\n"); // == 를 출력합니다. 
-		System.out.printf("%26s\n%s\n%21s\n%24s\n%24s\n", "교환/환불 14일(" + k17_afterdate + ")이내,", "(전자)영수증, 결제카드 지참 후 구입매장에", "서 가능", 
+		System.out.printf("%26s\n%s\n%24s\n%24s\n", "교환/환불 14일(" + k17_afterdate + ")이내,", "(전자)영수증, 결제카드 지참 후 구입매장에서 가능", 
 							"포장/가격 택 훼손시 교환/환불 불가", "체크카드 취소 시 최대 7일 소요"); // 문자를 출력합니다. 
 		System.out.printf("=========================================\n"); // == 를 출력합니다. 
 		System.out.printf("%s%28s\n", "[POS 1058231]", k17_sdt.format(k17_cal.getTime())); // k17_sdt.format(k17_cal.getTime())를 통해 실제 날짜 시간을 구하고 출력해줍니다.
 		System.out.printf("=========================================\n"); // == 를 출력해줍니다. 
-		System.out.printf("%1.14s%7s%2d%6s\n%s\n", k17_itemname1, k17_df.format(k17_price1), k17_amount1, k17_df.format(k17_price1*k17_amount1), k17_itemcode1);
+		System.out.printf("%1.9s%10s%3d%11s\n%s\n", k17_itemname1, k17_df.format(k17_price1), k17_amount1, k17_df.format(k17_price1*k17_amount1), k17_itemcode1);
 		// ex) %1.14s 가 뜻하는 것은 1만큼의 간격을 부여하고 문자 14번째자리까지 출력하고 뒤는 생략한다는 뜻입니다. 
 		// 그리고 각각의 값들을 출력해줍니다. 
-		System.out.printf("%1.14s%9s%2d%6s\n%s\n", k17_itemname2, k17_df.format(k17_price2), k17_amount2, k17_df.format(k17_price2*k17_amount2), k17_itemcode2);
+		System.out.printf("%1.9s%10s%3d%11s\n%s\n", k17_itemname2, k17_df.format(k17_price2), k17_amount2, k17_df.format(k17_price2*k17_amount2), k17_itemcode2);
 		// 마찬가지로 출력합니다. 
-		System.out.printf("%1.14s%7s%2d%6s\n%s\n", k17_itemname3, k17_df.format(k17_price3), k17_amount3, k17_df.format(k17_price3*k17_amount3), k17_itemcode3);
+		System.out.printf("%1.9s%10s%3d%11s\n%s\n", k17_itemname3, k17_df.format(k17_price3), k17_amount3, k17_df.format(k17_price3*k17_amount3), k17_itemcode3);
 		// 또한 마찬가지로 출력합니다. 
 		System.out.printf("%18s%19s\n", "과세합계", k17_df.format(k17_netprice)); // 콤마를 구하기 위해 k17_df.format를 사용하고 변수의 값을 출력해줍니다. 
 		System.out.printf("%19s%19s\n", "부가세", k17_df.format(k17_tax)); // 콤마를 구하기 위해 k17_df.format를 사용하고 변수의 값을 출력해줍니다.
@@ -76,12 +77,12 @@ public class Fifth {
 		System.out.printf("%s%33s\n", "우리카드", "538720**********"); // 문자를 출력합니다. 
 		System.out.printf("%s%17s\n", "승인번호 77982843(0)", "승인금액 "+k17_df.format(k17_price)); // 콤마를 구하기 위해 k17_df.format를 사용하고 변수의 값을 출력해줍니다.
 		System.out.printf("=========================================\n"); // ==를 출력합니다. 
-		System.out.printf("%26s%s\n", k17_sdt.format(k17_cal.getTime()), " 분당서현점"); // 시간을 구하기 위해 k17_sdt.format(k17_cal.getTime())을 사용하고 시간과 문자를 출력합니다. 
+		System.out.printf("%25s%s\n", k17_sdt.format(k17_cal.getTime()), " 분당서현점"); // 시간을 구하기 위해 k17_sdt.format(k17_cal.getTime())을 사용하고 시간과 문자를 출력합니다. 
 		System.out.printf("%s\n", "상품 및 기타 문의 : 1522-4400"); // 문자를 출력합니다. 
 		System.out.printf("%s\n", "멤버십 및 샵다이소 관련 문의 : 1599-2211"); // 문자를 출력합니다. 
 		System.out.printf("%30s\n", "|||||||||||||||||||"); // 바코드를 출력합니다. 
 		System.out.printf("%28s\n", "211820610158231"); // 문자를 출력합니다. 
 		System.out.printf("-----------------------------------------\n"); // --- 를 출력합니다. 
-		System.out.printf("%s\n %s\n %s", "*다이소 멤버십 앱 또는 홈페이지에 접속하","셔서 회원가입 후 다양한 혜택을 누려보세", "요!*"); // 문자를 출력합니다. 
+		System.out.printf("%s\n", "◈다이소 멤버십 앱 또는 홈페이지에 접속하셔서 회원가입 후 다양한 혜택을 누려보세요!◈"); // 문자를 출력합니다. 
 	}
 }
