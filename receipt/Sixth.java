@@ -10,7 +10,7 @@ public class Sixth {
 	public static String nameChange(String k17_item, int k17_len) throws UnsupportedEncodingException {      
 	      String k17_temp, k17_newName; // 스트링 값 temp와 newName를 선언
 	      byte[] k17_byte1 = k17_item.getBytes("euc-kr");   // euc-kr 형식으로 바이트 단위로 쪼갬
-	      if (k17_byte1.length < 15) { // byte1의 길이가 16바이트 미만일 경우
+	      if (k17_byte1.length < 15) { // byte1의 길이가 15바이트 미만일 경우
 	         k17_temp = k17_item; // 아이템이름을 그대로 출력
 	      } else { // 그렇지 않을 경우
 	         int k17_count = 0; // 정수형 변수 count를 선언하고 0으로 초기화
@@ -62,7 +62,7 @@ public class Sixth {
 		System.out.printf("%s%18s\n", "[구매]" + k17_sdt.format(k17_cal.getTime()), "POS:0011-9861"); 
 		// k17_sdt.format(k17_cal.getTime())를 통해 실제 날짜와 시간을 구해줍니다. 
 		System.out.printf("----------------------------------------\n"); // -- 를 출력해줍니다. 
-		System.out.printf("%7s%13s%3s%7s\n", "상 품 명", "단  가", "수량", "금  액"); // 문자열들을 출력해줍니다. 
+		System.out.printf("%7s%13s%3s%8s\n", "상 품 명", "단  가", "수량", "금  액"); // 문자열들을 출력해줍니다. 
 		System.out.printf("----------------------------------------\n"); // -- 를 출력해줍니다. 
 
 		//System.out.println(k17_itemname[0].getBytes("euc-kr").length);
@@ -122,8 +122,8 @@ public class Sixth {
 		System.out.printf("----------------------------------------\n"); // -- 를 출력해줍니다. 
 		System.out.printf("%22s\n", "[신세계포인트 적립]"); // 문자를 출력해줍니다. 
 		System.out.printf("%s\n", "송*석 고객님의 포인트 현황입니다."); // 문자를 출력해줍니다. 
-		System.out.printf("%s%18s%8s\n", "금화발생포인트", "9350**9995", "164"); // 문자들을 출력해줍니다. 
-		System.out.printf("%s%16s%8s\n", "누계(기용)포인트", "5,637(", "5,473)"); // 문자들을 출력해줍니다.
+		System.out.printf("%s%18s%8s\n", "금회발생포인트", "9350**9995", "164"); // 문자들을 출력해줍니다. 
+		System.out.printf("%s%16s%8s\n", "누계(가용)포인트", "5,637(", "5,473)"); // 문자들을 출력해줍니다.
 		System.out.printf("%s\n", "*신세계포인트 유효기간은 2년입니다."); // 문자를 출력해줍니다. 
 		System.out.printf("----------------------------------------\n"); // --를 출력해줍니다. 
 		System.out.printf("%21s\n", "구매금액기준 무료주차시간 자동부여"); // 문자들을 출력해줍니다. 

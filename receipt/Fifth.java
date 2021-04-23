@@ -1,5 +1,6 @@
 package hong5;
 
+import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -11,7 +12,27 @@ public class Fifth {
 		return (int)(k17_price/(1+ k17_rate)); // 정수형으로 받은 k17_Price 나누기 (1+k17_rate)의 값을 리턴합니다.
 	}
 	
-	public static void main(String[] args) {
+	public static String nameChange(String k17_item, int k17_len) throws UnsupportedEncodingException {      
+	      String k17_temp, k17_newName; // 스트링 값 temp와 newName를 선언
+	      byte[] k17_byte1 = k17_item.getBytes("euc-kr");   // euc-kr 형식으로 바이트 단위로 쪼갬
+	      if (k17_byte1.length < 18) { // byte1의 길이가 15바이트 미만일 경우
+	         k17_temp = k17_item; // 아이템이름을 그대로 출력
+	      } else { // 그렇지 않을 경우
+	         int k17_count = 0; // 정수형 변수 count를 선언하고 0으로 초기화
+	         for (int k17_i = 0; k17_i <k17_len; k17_i++) { // i값이 len까지 1씩 증가하면서 반복
+	            if ((k17_byte1[k17_i] & 0x80) == 0x80) k17_count++; // & 연산자를 통해 해당 바이트가 한글인지를 확인
+	         }
+	         // 마지막 바이트-1 값이 한글이거나 count를 나눈값이 홀수이면 마지막 바이트를 자름
+	         if ((k17_byte1[k17_len - 1] & 0x80) == 0x80 && (k17_count % 2) == 1) k17_len--;
+	         k17_temp = new String(k17_byte1, 0, k17_len, "euc-kr");   // 0에서 len까지 자른 스트링을 저장
+	      }
+	      k17_temp = k17_temp + "                     "; // 남은 칸을 빈칸으로 맞추기 위함
+	      byte[] byte2 = k17_temp.getBytes("euc-kr"); // euc-kr 형식으로 바이트를 다시 쪼갬
+	      k17_newName = new String(byte2, 0, 18, "euc-kr"); // newName에 euc-kr 형식으로 0에서 16바이트까지 자른 스트링을 저장   
+	      return k17_newName;   // newName값을 반환
+	}
+	
+	public static void main(String[] args) throws UnsupportedEncodingException {
 		
 		DecimalFormat k17_df = new DecimalFormat("###,###,###,###,###"); // 콤마를 구하기 위한 식입니다. 
 		Calendar k17_cal = Calendar.getInstance(); // 실제 날짜, 시간을 구하기 위한 식입니다. 
@@ -25,18 +46,21 @@ public class Fifth {
 		// 문자형 클래스를 정의하고 새로운 형식의 날짜를 저장해줍니다. 
 		String k17_itemname1 = "퓨어에어 비말차단용마스크(최고급행)"; // 문자형 클래스 k17_itemname1 을 정의하고 안에 문자열을 저장해줍니다. 
 		String k17_itemcode1 = "[1031615]"; // 문자형 클래스 k17_itemcode1을 정의하고 안에 문자열을 저장해줍니다. 
-		int k17_price1 = 10000000; // 정수형 변수 k17_price1을 정의하고 3000을 저장해줍니다. 
-		int k17_amount1 = 13; // 정수형 변수 k17_amount1을 정의하고 1을 저장해줍니다. 
+		int k17_price1 = 1000000; // 정수형 변수 k17_price1을 정의하고 3000을 저장해줍니다. 
+		int k17_amount1 = 83; // 정수형 변수 k17_amount1을 정의하고 1을 저장해줍니다. 
+		k17_itemname1 = nameChange(k17_itemname1, 18);
 		
 		String k17_itemname2 = "슬라이드식명창(가로명)(100호)"; // 문자형 클래스 k17_itemname2 을 정의하고 안에 문자열을 저장해줍니다. 
 		String k17_itemcode2 = "[11008152]"; // 문자형 클래스 k17_itemcode2을 정의하고 안에 문자열을 저장해줍니다.
-		int k17_price2 = 3000000; // 정수형 변수 k17_price2을 정의하고 1000을 저장해줍니다. 
+		int k17_price2 = 3000; // 정수형 변수 k17_price2을 정의하고 1000을 저장해줍니다. 
 		int k17_amount2 = 3; // 정수형 변수 k17_amount2을 정의하고 1을 저장해줍니다. 
+		k17_itemname2 = nameChange(k17_itemname2, 18);
 		
 		String k17_itemname3 = "매직흡착 인테리어후크(알루미늄타입)"; // 문자형 클래스 k17_itemname3 을 정의하고 안에 문자열을 저장해줍니다.
 		String k17_itemcode3 = "[1020800]"; // 문자형 클래스 k17_itemcode3을 정의하고 안에 문자열을 저장해줍니다.
 		int k17_price3 = 1000; // 정수형 변수 k17_price3을 정의하고 1000을 저장해줍니다. 
 		int k17_amount3 = 1; // 정수형 변수 k17_amount3을 정의하고 1을 저장해줍니다. 
+		k17_itemname3 = nameChange(k17_itemname3, 18);
 		
 		int k17_price = 0; // 정수형 변수 k17_price 를 정의하고 0으로 초기화합니다. 
 		k17_price = (int)((k17_price1*k17_amount1)+(k17_price2*k17_amount2)+(k17_price3*k17_amount3));
@@ -60,12 +84,12 @@ public class Fifth {
 		System.out.printf("=========================================\n"); // == 를 출력합니다. 
 		System.out.printf("%s%28s\n", "[POS 1058231]", k17_sdt.format(k17_cal.getTime())); // k17_sdt.format(k17_cal.getTime())를 통해 실제 날짜 시간을 구하고 출력해줍니다.
 		System.out.printf("=========================================\n"); // == 를 출력해줍니다. 
-		System.out.printf("%1.9s%10s%3d%11s\n%s\n", k17_itemname1, k17_df.format(k17_price1), k17_amount1, k17_df.format(k17_price1*k17_amount1), k17_itemcode1);
+		System.out.printf("%s%9s%3d%11s\n%s\n", k17_itemname1, k17_df.format(k17_price1), k17_amount1, k17_df.format(k17_price1*k17_amount1), k17_itemcode1);
 		// ex) %1.14s 가 뜻하는 것은 1만큼의 간격을 부여하고 문자 14번째자리까지 출력하고 뒤는 생략한다는 뜻입니다. 
 		// 그리고 각각의 값들을 출력해줍니다. 
-		System.out.printf("%1.9s%10s%3d%11s\n%s\n", k17_itemname2, k17_df.format(k17_price2), k17_amount2, k17_df.format(k17_price2*k17_amount2), k17_itemcode2);
+		System.out.printf("%s%9s%3d%11s\n%s\n", k17_itemname2, k17_df.format(k17_price2), k17_amount2, k17_df.format(k17_price2*k17_amount2), k17_itemcode2);
 		// 마찬가지로 출력합니다. 
-		System.out.printf("%1.9s%10s%3d%11s\n%s\n", k17_itemname3, k17_df.format(k17_price3), k17_amount3, k17_df.format(k17_price3*k17_amount3), k17_itemcode3);
+		System.out.printf("%s%9s%3d%11s\n%s\n", k17_itemname3, k17_df.format(k17_price3), k17_amount3, k17_df.format(k17_price3*k17_amount3), k17_itemcode3);
 		// 또한 마찬가지로 출력합니다. 
 		System.out.printf("%18s%19s\n", "과세합계", k17_df.format(k17_netprice)); // 콤마를 구하기 위해 k17_df.format를 사용하고 변수의 값을 출력해줍니다. 
 		System.out.printf("%19s%19s\n", "부가세", k17_df.format(k17_tax)); // 콤마를 구하기 위해 k17_df.format를 사용하고 변수의 값을 출력해줍니다.
@@ -83,6 +107,6 @@ public class Fifth {
 		System.out.printf("%30s\n", "|||||||||||||||||||"); // 바코드를 출력합니다. 
 		System.out.printf("%28s\n", "211820610158231"); // 문자를 출력합니다. 
 		System.out.printf("-----------------------------------------\n"); // --- 를 출력합니다. 
-		System.out.printf("%s\n", "◈다이소 멤버십 앱 또는 홈페이지에 접속하셔서 회원가입 후 다양한 혜택을 누려보세요!◈"); // 문자를 출력합니다. 
+		System.out.printf("%s\n", "◈ 다이소 멤버십 앱 또는 홈페이지에 접속하셔서 회원가입 후 다양한 혜택을 누려보세요! ◈"); // 문자를 출력합니다. 
 	}
 }

@@ -24,9 +24,9 @@ public class Fourth {
 		SimpleDateFormat k17_sdt2 = new SimpleDateFormat("YYYYMMdd");
 		
 		System.out.printf("%s\n", "신용승인"); // 문자열 클래스이므로 %s를 사용하고 \n을 통해 줄을 바꿉니다. 그리고 마지막에 원하는 문자열을 출력합니다. 
-		System.out.printf("%s%5s%12s%5s\n","단말기 : ","2N6865898", "전표번호 : ", "0421218"); // 문자열 클래스이므로 s를 사용합니다. 
+		System.out.printf("%s%5s%12s%5s\n","단말기 : ","2N68665898", "전표번호 : ", "041218"); // 문자열 클래스이므로 s를 사용합니다. 
 		System.out.printf("%s%5s\n", "가맹점 : ", "한양김치찌개"); // 마찬가지로 5칸의 간격을 주고 문자열을 출력합니다.
-		System.out.printf("%s%5s\n%s\n", "주  소 : ","경기 성남시 분당구 황새울로351번","길 10 . 1층"); // 문자 출력합니다. 
+		System.out.printf("%s%5s\n", "주  소 : ","경기 성남시 분당구 황새울로351번길 10 . 1층"); // 문자 출력합니다. 
 		System.out.printf("%s%2s\n", "대표자 : ", "유창신"); // 문자 출력합니다. 
 		System.out.printf("%s%5s%13s%5s\n","사업자 : ", "752-53-00558","TEL : ", "7055695"); // 문자 출력합니다. 
 		System.out.printf("- - - - - - - - - - - - - - - - - - - - - \n"); // 문자출력합니다. 
@@ -39,7 +39,7 @@ public class Fourth {
 		System.out.printf("%s%5s\n", "거래일시 : ", k17_sdt.format(k17_cal.getTime())); // 시간을 구하기 위해 k17_sdt.format(k17_cal.getTime()) 을 사용하고 날짜시간을 구해줍니다. 
 		System.out.printf("%s%5s\n", "승인번호 : ", "70404427"); // 문자를 출력합니다. 
 		System.out.printf("%s%5s\n", "거래번호 : ", "357734873739"); // 문자를 출력합니다. 
-		System.out.printf("%s%5s%13s%5s\n", "매입 : ", "비씨카드사", "가맹 : ", "720068568"); // 문자를 출력합니다. 
+		System.out.printf("%s%5s%10s%5s\n", "매입 : ", "비씨카드사", "가맹 : ", "720068568"); // 문자를 출력합니다. 
 		System.out.printf("%s%5s\n", "알림 : ", "EDC매출표"); // 문자를 출력합니다. 
 		System.out.printf("%s%5s\n", "문의 : ", "TEL)1544-4700"); // 문자를 출력합니다. 
 		System.out.printf("- - - - - - - - - - - - - - - - - - - - - \n"); // - - 를 출력합니다. 
