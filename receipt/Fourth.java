@@ -44,6 +44,6 @@ public class Fourth {
 		System.out.printf("%s%5s\n", "문의 : ", "TEL)1544-4700"); // 문자를 출력합니다. 
 		System.out.printf("- - - - - - - - - - - - - - - - - - - - - \n"); // - - 를 출력합니다. 
 		System.out.printf("%23s\n", "* 감사합니다 *"); // 문자를 출력합니다. 
-		System.out.printf("%39s","표준V2.08_" + k17_sdt2.format(k17_cal.getTime())); // 문자를 출력합니다. 
+		System.out.printf("%39s","표준V2. 08_" + k17_sdt2.format(k17_cal.getTime())); // 문자를 출력합니다. 
 	}
 }
